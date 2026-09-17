@@ -38,27 +38,4 @@ async function startBot() {
       if (statusCode !== DisconnectReason.loggedOut) {
         startBot();
       } else {
-        console.log("Logged out. Pair again to reconnect.");
-      }
-    }
-  });
-
-  sock.ev.on("messages.upsert", async ({ messages }) => {
-    const msg = messages[0];
-
-    if (!msg?.message || msg.key.fromMe) return;
-
-    const text =
-      msg.message.conversation ||
-      msg.message.extendedTextMessage?.text ||
-      "";
-
-    if (text.trim().toLowerCase() === ".alive") {
-      await sock.sendMessage(msg.key.remoteJid, {
-        text: "🤖 SANJU MD MINI BOT is alive!"
-      });
-    }
-  });
-}
-
-startBot().catch(console.error);
+        console.log("Logged o
